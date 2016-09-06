@@ -1,0 +1,5 @@
+[signonotron]
+site_url = https://www.example.gov.uk
+authorize_url = https://www.example.gov.uk/oauth/authorize
+access_token_url = https://www.example.gov.uk/oauth/token
+user_details_url = https://www.example.gov.uk/user.json?token=
