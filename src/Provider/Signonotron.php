@@ -8,13 +8,13 @@ class Signonotron extends AbstractProvider {
     public $ini;
 
     public function getBaseAuthorizationUrl() {
-        return $this->ini['authorize_url'];
+        return $this->ini['site_url'] . "/oauth/authorize";
     }
     public function getBaseAccessTokenUrl(array $params) {
-        return $this->ini['access_token_url'];
+        return $this->ini['site_url'] . "/oauth/token";
     }
     public function getResourceOwnerDetailsUrl(AccessToken $token) {
-        return $this->ini['access_token_url'] . "?token=" . urlencode($token);
+        return $this->ini['site_url'] . "/user.json?token=" . urlencode($token);
     }
     protected function getDefaultScopes() {
         return $this->defaultScopes;
