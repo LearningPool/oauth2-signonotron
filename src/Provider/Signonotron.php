@@ -7,14 +7,14 @@ use \League\OAuth2\Client\Token\AccessToken;
 class Signonotron extends AbstractProvider {
     public $ini;
 
-    public function getBaseAuthorizationUrl() {
+    public function urlAuthorize() {
         return $this->ini['site_url'] . "/oauth/authorize";
     }
-    public function getBaseAccessTokenUrl(array $params) {
+    public function urlAccessToken(array $params) {
         return $this->ini['site_url'] . "/oauth/token";
     }
-    public function getResourceOwnerDetailsUrl(AccessToken $token) {
-        return $this->ini['site_url'] . "/user.json?token=" . urlencode($token);
+    public function urlUserDetails(AccessToken $token) {
+        return $this->ini['site_url'] . "/user.json?access_token=" . urlencode($token);
     }
     protected function getDefaultScopes() {
         return $this->defaultScopes;
@@ -34,10 +34,11 @@ class Signonotron extends AbstractProvider {
     }
 
     public function userDetails($response, AccessToken $token) {
-        $user = new User;
-        $user->uid = $response->uid;
-        $user->name = $response->name;
-        $user->email = $response->email;
+        $user = new User();
+        $user->uid = $response->user->uid;
+        $user->name = $response->user->name;
+        $user->email = $response->user->email;
+
         return $user;
     }
 }
