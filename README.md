@@ -17,6 +17,10 @@ composer require rlafferty05/oauth2-signonotron
 
 Usage is the same as The League's OAuth client, using `\Learningpool\OAuth2\Client\Provider\Signonotron` as the provider.
 
+### Sign-On-O-Tron URL
+
+Unlike many other SSO providers, Sign-On-O-Tron doesn't have one central location. Different organisations can set up their own Sign-On-O-Tron connection with different URLs, so we need to include the correct URL. This can be done by renaming signonotron.ini.dist to signonotron.ini in the src/Provider folder and changing the site_url variable in the ini file to point to the correct location.
+
 ### Authorization Code Flow
 
 ```php
