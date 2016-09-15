@@ -2,5 +2,4 @@
 composer.phar
 composer.lock
 .DS_Store
-signonotron.ini
 src/Provider/signonotron.ini
