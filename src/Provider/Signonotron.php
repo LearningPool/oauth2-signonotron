@@ -10,6 +10,7 @@ class Signonotron extends AbstractProvider {
     public function urlAuthorize() {
         return $this->ini['site_url'] . "/oauth/authorize";
     }
+
     public function urlAccessToken() {
         return $this->ini['site_url'] . "/oauth/token";
     }
@@ -28,8 +29,7 @@ class Signonotron extends AbstractProvider {
         return new SignonotronResourceOwner($response);
     }
 
-    public function getAuthorizationUrl($options = [])
-    {
+    public function getAuthorizationUrl($options = []) {
         $this->state = isset($options['state']) ? $options['state'] : md5(uniqid(rand(), true));
 
         $params = [
